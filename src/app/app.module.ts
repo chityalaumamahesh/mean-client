@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule }   from '@angular/forms';
-import { AuthGuard } from './auth.guard';
+
 
 
 import { AppRoutingModule } from './app-routing.module';
 import { DataService } from './data.service';
+import { AuthService } from './auth.service';
+import { AuthGuard } from './auth.guard';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -16,11 +18,11 @@ import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: '/login',pathMatch: 'full'},
+  { path: '', redirectTo: '/login',pathMatch: 'full', canActivate: [AuthGuard]},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegitsterComponent },
   { path: 'profile', component: ProfileComponent },
-  { path: 'home', component: HomeComponent },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
 ];
 @NgModule({
   declarations: [
@@ -39,7 +41,7 @@ const appRoutes: Routes = [
       appRoutes,
       { enableTracing: true }
     ],
-  providers: [DataService],
+  providers: [DataService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
