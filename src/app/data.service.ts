@@ -13,7 +13,9 @@ export class DataService implements CanActivate{
   				) { }
 
   getProfileData() {
-        return this.http.get(API_URL+ '/getUserDetails');
+      let headers = new HttpHeaders();
+      headers.append('Authorization',localStorage.getItem('AuthToken'))
+        return this.http.get(API_URL+ '/getUserDetails',{headers:headers});
     },
    register(regObj){
       return this.http.post(API_URL+ '/register',regObj)

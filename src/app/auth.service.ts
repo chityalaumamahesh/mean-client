@@ -10,6 +10,7 @@ export class AuthService {
   sendToken(token) {
   	console.log('logged in user',token)
     localStorage.setItem("LoggedInUser", JSON.stringify(token);
+    localStorage.setItem("AuthToken", token.token);
   }
   getToken() {
     return localStorage.getItem("LoggedInUser")
