@@ -17,7 +17,7 @@ export class DataService implements CanActivate{
   login(user:any){
   	console.log(user)
   	let data ={userName:user.userName,password:user.password}
-  	return this.http.get(API_URL+ "/login?userName="+data.userName+"&password="+data.password);
+  	return this.http.get(API_URL+ "/authenticate?userName="+data.userName+"&password="+data.password);
   } 
 
 }
