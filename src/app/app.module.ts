@@ -39,7 +39,7 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: true }
+      { enableTracing: true })
     ],
   providers: [DataService, AuthService, AuthGuard],
   bootstrap: [AppComponent]

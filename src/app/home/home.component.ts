@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-home',
@@ -9,10 +10,12 @@ import { DataService } from '../data.service';
 export class HomeComponent implements OnInit {
 
   public profileArray:any =[];
-  constructor(private userData: DataService) { }
+  public dashboardData: any = [];
+  constructor(private userData: DataService, private authService: AuthService) { }
 
   ngOnInit() {
   	this.profleData();
+    this.dashboard();
   }
   profleData(){
   	this.userData.getProfileData().subscribe(
@@ -20,6 +23,16 @@ export class HomeComponent implements OnInit {
   		err => console.log(err),	
   		() => console.log('done loading profile details')
   	)
+  }
+  dashboard(){
+    this.userData.getDashboard().subscribe(
+      data=> {this.dashboardData = data},
+      err =>console.log(err),
+      ()=> console.log('done loading dashboard');
+    )
+  }
+  logout(){
+    this.authService.logout();
   }
 
 }
