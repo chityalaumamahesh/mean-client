@@ -15,25 +15,24 @@ export class LoginComponent implements OnInit {
    public userData: any = {};	
    public model: any ={};
   constructor(private loginService: DataService, 
-              private router:Router,
+              private router: Router,
               private auth: AuthService
-              ) { }
+              ) { };
 
   ngOnInit() {
   }
-  login(this.model){
-  	console.log("login ",this.model)
-  	this.loginService.login(this.model)
-  	.subscribe(
+  
+  login(){
+  	console.log("login", this.model);
+  	this.loginService.login(this.model).subscribe(
   		user =>{
-  			 if (user && user.token) {
+  			 if (user) {
   	  			this.userData = user;
             this.auth.sendToken(this.userData);
   	  			console.log("response",user);
   	  			console.log("userDetails",this.userData.data);
   	  			 this.router.navigate(['home']);
   			  }
-  		}
-  	) 	
+  		}); 	
   }	
 }

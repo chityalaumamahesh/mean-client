@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 
+import{ ReverseStrPipe } from '.pipes/reverse-str.pipe';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -8,11 +9,15 @@ import { DataService } from '../data.service';
 })
 export class ProfileComponent implements OnInit {
   public profileArray:any =[];
+
+  
+
   constructor(private userData: DataService) { }
 
   ngOnInit() {
   	this.profleData();
   }
+
   profleData(){
   	this.userData.getProfileData().subscribe(
   		data => {this.profileArray = data},

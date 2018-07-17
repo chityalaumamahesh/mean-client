@@ -5,11 +5,11 @@ import {Router} from '@angular/router';
 @Injectable()
 export class AuthService {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) { };
 
   sendToken(token) {
   	console.log('logged in user',token)
-    localStorage.setItem("LoggedInUser", JSON.stringify(token);
+    localStorage.setItem("LoggedInUser", JSON.stringify(token));
     localStorage.setItem("AuthToken", token.token);
   }
   getToken() {

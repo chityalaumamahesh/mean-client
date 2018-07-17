@@ -1,0 +1,45 @@
+<div class="col-md-offset-1 col-md-6 ">
+
+ <h2>User CRUD</h2>
+ <div>
+  <table style="width:100%">
+  <tr>
+    <th>Firstname</th>
+    <th>Lastname</th> 
+    <th>User name</th>
+    <th> mobile No </th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+  <tr *ngFor="let data of usrArr">
+    <td>{{data.firstName}}</td>
+    <td>{{data.lastName}}</td>
+    <td>{{data.userName}}</td>
+    <td>{{data.mobileNo}}</td>
+    <td><button (click)="delete(data._id)"><span class="glyphicon glyphicon-trash"></span></button>
+    <td><button (click)="edit(data)"><span class="glyphicon glyphicon-edit"></span></button>
+    </td>
+  </tr>
+</table>
+{{msg}}
+  </div>
+  <br><br>
+  <div>
+  	<form>
+  First name:
+  <input type="text" name="firstname" [(ngModel)]="model.firstName">
+  last Name :
+  <input type="text" name="lastname" [(ngModel)]="model.lastName">
+  userName:
+  <input type="text" name="username" [(ngModel)]="model.userName">
+    password:
+  <input type="text" name="password" [(ngModel)]="model.password">
+  <br><br>
+  <input type="button" value="Submit" (click)="submit()">
+</form> 
+<div>
+	<input type="text" [(ngModel)]="id">
+	<input type="button" (click)="getById(id)" value="getById">
+</div>
+  </div>
+ </div> 

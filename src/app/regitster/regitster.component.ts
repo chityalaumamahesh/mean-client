@@ -7,13 +7,16 @@ import { DataService } from '../data.service';
   styleUrls: ['./regitster.component.css']
 })
 export class RegitsterComponent implements OnInit {
-	model:any ={};
-	msg: String;
-  constructor(private dataService: DataService) { }
+	public model:any ={};
+	public msg: any;
+  constructor(private dataService: DataService) { };
 
   ngOnInit() {
   }
   register(){
-  		this.dataService.register(this.model).subscribe(data => this.msg = data; this.model = {})
-  }
+  		this.dataService.register(this.model).subscribe(
+            data => this.msg = data,
+            this.model = {},
+            )
+  };
 }

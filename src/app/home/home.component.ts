@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
     this.dashboard();
   }
   profleData(){
+  console.log("checks profile data")
   	this.userData.getProfileData().subscribe(
   		data => {this.profileArray = data},
   		err => console.log(err),	
@@ -28,11 +29,10 @@ export class HomeComponent implements OnInit {
     this.userData.getDashboard().subscribe(
       data=> {this.dashboardData = data},
       err =>console.log(err),
-      ()=> console.log('done loading dashboard');
-    )
-  }
+      ()=> console.log('done loading dashboard'))
+  };
   logout(){
     this.authService.logout();
-  }
+  };
 
 }
